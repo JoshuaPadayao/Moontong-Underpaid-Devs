@@ -1,7 +1,7 @@
 # Moontong-Underpaid-Devs
 A repository for the coding exam (**ECE115.2 16JK**)
 
-##We are going to create a **Python Stopwatch** that include the following features:##
+## We are going to create a **Python Stopwatch** that include the following features:
   - Has a graphical user interface (GUI)
   - Widget style
   - Can show the length of time that elapsed from the stopwatch's activation and deactivation
