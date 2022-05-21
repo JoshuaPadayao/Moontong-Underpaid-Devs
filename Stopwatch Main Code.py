@@ -1,3 +1,32 @@
+# Sound Effects
+# Functions that searches the sound and plays it.
+import pygame
+
+pygame.mixer.init()
+
+def clear_laps_sound():
+    pygame.mixer.music.load('CLEAR.wav')
+    pygame.mixer.music.play(0)
+
+def lap_sound():
+    pygame.mixer.music.load('lAP.wav')
+    pygame.mixer.music.play(0)
+
+def start_default():
+    pygame.mixer.music.load('DEFAULT.wav')
+    pygame.mixer.music.play(-1)
+
+def stop_sound():
+    pygame.mixer.music.load('STOP.wav')
+    pygame.mixer.music.play(0)
+
+def reset_sound():
+    pygame.mixer.music.load('RESET.wav')
+    pygame.mixer.music.play(0)
+
+
+
+
 # https://programsolve.com/python-to-create-a-simple-stopwatch-with-source-code/
 
 
@@ -111,11 +140,11 @@ label2.pack()
 f = Tkinter.Frame(root)
 
 # Buttons
-clear_laps = Tkinter.Button(f, text='Clear', width=6, state='disabled', command=Clear)
-lap = Tkinter.Button(f, text='Split', width=6, state='disabled', command=Lap)
-start = Tkinter.Button(f, text='Start', width=6, command=lambda: Start(label))
-stop = Tkinter.Button(f, text='Stop', width=6, state='disabled', command=Stop)
-reset = Tkinter.Button(f, text='Reset', width=6, state='disabled', command=lambda: Reset(label))
+clear_laps = Tkinter.Button(f, text='Clear', width=6, state='disabled', command=lambda:[Clear(), clear_laps_sound()])
+lap = Tkinter.Button(f, text='Split', width=6, state='disabled', command=lambda:[Lap(), lap_sound()])
+start = Tkinter.Button(f, text='Start', width=6, command=lambda:[Start(label), start_default()])
+stop = Tkinter.Button(f, text='Stop', width=6, state='disabled', command=lambda:[Stop(), stop_sound()])
+reset = Tkinter.Button(f, text='Reset', width=6, state='disabled', command=lambda:[Reset(label), reset_sound()])
 
 # Create a frame
 frame = Frame(root)
@@ -141,5 +170,44 @@ lap.pack(side='left')
 start.pack(side='left')
 stop.pack(side='left')
 reset.pack(side='left')
+
+
+
+
+
+# Toggle button for enabling and disabling sound.
+# Guide video used: https://youtu.be/nvy56p3P-MM and https://youtu.be/iPqkQS6wFF8
+
+from tkinter import *
+
+g = Tkinter.Frame(root)
+
+M_button_on = PhotoImage(file='Toggle On.png')
+M_button_off = PhotoImage(file='Toggle Off.png')
+
+
+def on():
+    music_toggle_button.configure(command=off,image=M_button_on)
+    clear_laps.configure(command=lambda:[Clear(), clear_laps_sound()])
+    lap.configure(command=lambda:[Lap(), lap_sound()])
+    start.configure(command=lambda:[Start(label), start_default()])
+    stop.configure(command=lambda:[Stop(), stop_sound()])
+    reset.configure(command=lambda:[Reset(label), reset_sound()])
+
+def off():
+    music_toggle_button.configure(command=on,image=M_button_off)
+    clear_laps.configure(command=Clear)
+    lap.configure(command=Lap)
+    start.configure(command=lambda: Start(label))
+    stop.configure(command=Stop)
+    reset.configure(command=lambda: Reset(label))
+
+music_toggle_label = Label(g,text="Music",border=0,font=('bold',11))
+music_toggle_button = Button(g,image=M_button_on,border=0,command=off)
+g.pack(anchor='center', pady=5)
+music_toggle_label.pack(side='left')
+music_toggle_button.pack(side='left')
+
+
 
 root.mainloop()
