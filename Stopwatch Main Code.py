@@ -9,7 +9,7 @@ def clear_laps_sound():
     pygame.mixer.music.play(0)
 
 def lap_sound():
-    pygame.mixer.music.load('lAP.wav')
+    pygame.mixer.music.load('LAP.wav')
     pygame.mixer.music.play(0)
 
 def start_default():
