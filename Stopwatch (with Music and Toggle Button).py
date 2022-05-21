@@ -1,3 +1,4 @@
+# Sound Effects
 # Functions that searches the sound and plays it.
 import pygame
 
