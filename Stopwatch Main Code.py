@@ -16,6 +16,26 @@ def start_default():
     pygame.mixer.music.load('DEFAULT.wav')
     pygame.mixer.music.play(-1)
 
+def start_soundtrack1():
+    pygame.mixer.music.load('Ang Wakas.wav')
+    pygame.mixer.music.play(-1)
+
+def start_soundtrack2():
+    pygame.mixer.music.load('Orange.wav')
+    pygame.mixer.music.play(-1)
+
+def start_soundtrack3():
+    pygame.mixer.music.load('Royalty Free.wav')
+    pygame.mixer.music.play(-1)
+
+def start_soundtrack4():
+    pygame.mixer.music.load('Star Blossom.wav')
+    pygame.mixer.music.play(-1)
+
+def start_soundtrack5():
+    pygame.mixer.music.load('Well Meet Again.wav')
+    pygame.mixer.music.play(-1)
+
 def stop_sound():
     pygame.mixer.music.load('STOP.wav')
     pygame.mixer.music.play(0)
@@ -126,6 +146,16 @@ def Reset(label):
 # App title
 root = Tkinter.Tk()
 root.title("Moontong Stopwatch")
+
+# Create a menu for changing the sound track.
+from tkinter import Menu
+
+my_menu= Menu(root)
+root.configure(menu=my_menu)
+
+file_menu = Menu (my_menu)
+my_menu.add_cascade(label="Music", menu= file_menu)
+
 root.iconbitmap('clock-icon.ico')
 
 # Fixing the window size and labels
@@ -171,8 +201,37 @@ start.pack(side='left')
 stop.pack(side='left')
 reset.pack(side='left')
 
+# Functions for changing soundtrack.
+def default():
+    start.configure(command=lambda:[Start(label), start_default()])
 
+def soundtrack_1():
+    start.configure(command=lambda:[Start(label), start_soundtrack1()])
 
+def soundtrack_2():
+    start.configure(command=lambda:[Start(label), start_soundtrack2()])
+
+def soundtrack_3():
+    start.configure(command=lambda:[Start(label), start_soundtrack3()])
+
+def soundtrack_4():
+    start.configure(command=lambda:[Start(label), start_soundtrack4()])
+
+def soundtrack_5():
+    start.configure(command=lambda:[Start(label), start_soundtrack5()])
+
+# Creating code for the contents of the Music menu
+file_menu.add_command(label= "Default", command= default)
+
+file_menu.add_command(label= "Soundtrack 1", command= soundtrack_1)
+
+file_menu.add_command(label= "Soundtrack 2", command= soundtrack_2)
+
+file_menu.add_command(label= "Soundtrack 3", command= soundtrack_3)
+
+file_menu.add_command(label= "Soundtrack 4", command= soundtrack_4)
+
+file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 
 
 # Toggle button for enabling and disabling sound.
