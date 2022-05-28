@@ -1,16 +1,18 @@
 # Sound Effects
 # Functions that searches the sound and plays it.
 import pygame
+from pygame import mixer
 
 pygame.mixer.init()
 
 def clear_laps_sound():
-    pygame.mixer.music.load('CLEAR.wav')
-    pygame.mixer.music.play(0)
+    CLEARRR = mixer.Sound('CLEAR.wav')
+    CLEARRR.play(0)
 
 def lap_sound():
-    pygame.mixer.music.load('LAP.wav')
-    pygame.mixer.music.play(0)
+    LAPSSS = mixer.Sound('LAP.wav')
+    LAPSSS.set_volume(0.2)
+    LAPSSS.play(0)
 
 def start_default():
     pygame.mixer.music.load('DEFAULT.wav')
@@ -163,6 +165,42 @@ root.geometry('700x550')
 root.resizable(0,0)
 label = Tkinter.Label(root, text='00:00:00', fg='navy', font='Calibri 40 bold')
 label.pack(anchor='center', pady=50)
+
+
+# Toggle button for enabling and disabling sound.
+# Guide video used: https://youtu.be/nvy56p3P-MM and https://youtu.be/iPqkQS6wFF8
+
+from tkinter import *
+
+g = Tkinter.Frame(root)
+
+M_button_on = PhotoImage(file='Toggle On.png')
+M_button_off = PhotoImage(file='Toggle Off.png')
+
+def on():
+    music_toggle_button.configure(command=off,image=M_button_on)
+    clear_laps.configure(command=lambda:[Clear(), clear_laps_sound()])
+    lap.configure(command=lambda:[Lap(), lap_sound()])
+    start.configure(command=lambda:[Start(label), start_default()])
+    stop.configure(command=lambda:[Stop(), stop_sound()])
+    reset.configure(command=lambda:[Reset(label), reset_sound()])
+
+def off():
+    music_toggle_button.configure(command=on,image=M_button_off)
+    clear_laps.configure(command=Clear)
+    lap.configure(command=Lap)
+    start.configure(command=lambda: Start(label))
+    stop.configure(command=Stop)
+    reset.configure(command=lambda: Reset(label))
+
+music_toggle_label = Label(g,text="Music",border=0,font=('bold',11))
+music_toggle_button = Button(g,image=M_button_on,border=0,command=off)
+g.pack(anchor='center', pady=5)
+music_toggle_label.pack(side='left')
+music_toggle_button.pack(side='left')
+
+
+# Continuation of the labels
 action_label = Tkinter.Label(root, text='Press Start to run stopwatch.', fg='black', font='Calibri 10 italic')
 action_label.pack(anchor='center', pady=20)
 label2 = Tkinter.Label(root, text='Laps:', fg='navy', font='Calibri 10 bold')
@@ -233,39 +271,6 @@ file_menu.add_command(label= "Soundtrack 4", command= soundtrack_4)
 
 file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 
-
-# Toggle button for enabling and disabling sound.
-# Guide video used: https://youtu.be/nvy56p3P-MM and https://youtu.be/iPqkQS6wFF8
-
-from tkinter import *
-
-g = Tkinter.Frame(root)
-
-M_button_on = PhotoImage(file='Toggle On.png')
-M_button_off = PhotoImage(file='Toggle Off.png')
-
-
-def on():
-    music_toggle_button.configure(command=off,image=M_button_on)
-    clear_laps.configure(command=lambda:[Clear(), clear_laps_sound()])
-    lap.configure(command=lambda:[Lap(), lap_sound()])
-    start.configure(command=lambda:[Start(label), start_default()])
-    stop.configure(command=lambda:[Stop(), stop_sound()])
-    reset.configure(command=lambda:[Reset(label), reset_sound()])
-
-def off():
-    music_toggle_button.configure(command=on,image=M_button_off)
-    clear_laps.configure(command=Clear)
-    lap.configure(command=Lap)
-    start.configure(command=lambda: Start(label))
-    stop.configure(command=Stop)
-    reset.configure(command=lambda: Reset(label))
-
-music_toggle_label = Label(g,text="Music",border=0,font=('bold',11))
-music_toggle_button = Button(g,image=M_button_on,border=0,command=off)
-g.pack(anchor='center', pady=5)
-music_toggle_label.pack(side='left')
-music_toggle_button.pack(side='left')
 
 
 
