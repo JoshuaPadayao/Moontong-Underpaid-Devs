@@ -327,11 +327,10 @@ file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 #About Us
 #Welcome!
 from tkinter import *
-from tkinter import Menu
-root = Tk()
-root.minsize(height = 50, width = 100)
-root.resizable(0,0)
-def tab1():
+import tkinter as tk
+my_w=tk.Tk()
+my_w.geometry("350x320)
+def my_tab1()
 	pass
 def my_tab2():
 	my_w_tab2=Toplevel(my_w)
@@ -351,7 +350,7 @@ def my_tab2():
         "Sharry Celines Marcos,\n"
         "John Nicole Losaria\n")
 menubar = tk.Menu(my_w)
-menu_aboutus=tk.Menu(menubar, tearoff=0)
+menu_aboutus=tk.Menu(menubar, tearoff=0, bg='blue')
 menubar.add_cascade(label="File", menu=menu_aboutus)
 menu_aboutus.add_command(label="About Us", command=lambda:my_tab2())
     
