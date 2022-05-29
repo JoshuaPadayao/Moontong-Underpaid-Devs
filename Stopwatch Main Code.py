@@ -329,8 +329,8 @@ file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 from tkinter import *
 import tkinter as tk
 my_w=tk.Tk()
-my_w.geometry("350x320)
-def my_tab1()
+my_w.geometry("350x320")
+def my_tab1():
 	pass
 def my_tab2():
 	my_w_tab2=Toplevel(my_w)
