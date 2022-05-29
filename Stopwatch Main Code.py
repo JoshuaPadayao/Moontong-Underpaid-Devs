@@ -331,7 +331,6 @@ root = Tk()
 root.minsize(height = 50, width = 100)
 root.resizable(0,0)
 def tab1():
-	pass
     def tab2():
 	my_w_tab2=Toplevel(my_w)
 	my_w_tab2.geometry("200x200")
