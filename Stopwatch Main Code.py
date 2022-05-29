@@ -150,7 +150,21 @@ def Reset(label):
 root = Tkinter.Tk()
 root.title("Moontong Stopwatch")
 root.iconbitmap('clock-icon.ico')
-root.config(bg='white')
+
+# Canvas background
+frame = Frame(root)
+frame.pack
+
+canvas = Canvas(frame, bg='black', width=350, height=550)
+canvas.pack
+
+nightbg = PhotoImage(file='dar.png')
+lightbg = PhotoImage(file='lig.png')
+
+
+lightMode = Label(root, image=lightbg)
+lightMode.place(x=0,y=0,relwidth=1,relheight=1)
+
 
 # Create a menu for changing the sound track.
 from tkinter import Menu
@@ -168,28 +182,33 @@ def customize ():
     global button_mode
     global label
 
+
+
     if button_mode:
-        button.config(image=noff,bg="#292929",activebackground="#292929")
-        label.config(bg='#292929', fg='white', font='Minecraft 40 bold')   
-        root.config(bg="#292929")
+        button.config(image=noff,bg="#3520BC",activebackground="#3520BC")
+        label.config(bg='#4831DF', fg='white', font='Minecraft 40 bold')   
+        root.config(bg="#3520BC")
         button_mode=False
+        lightMode.config(image=nightbg)
+        
     else:
-        button.config(image=lion,bg="white",activebackground="white")
-        label.config(bg='white', fg='black', font='Minecraft 40 bold')
-        root.config(bg="white")
+        button.config(image=lion,bg="#2DC3C9",activebackground="#2DC3C9")
+        label.config(bg='#91B7AC', fg='black', font='Minecraft 40 bold')
+        root.config(bg="#2DC3C9")
         button_mode= True
+        lightMode.config(image=lightbg)
 
 lion=PhotoImage(file=r'li.png')
 noff=PhotoImage(file=r'da.png')
 
-button= Button(root,image=lion,bd=0,bg="white", activebackground="white",command=customize)
-button.pack(side=TOP, anchor=NW)
+button= Button(root,image=lion,bd=0,bg="#2DC3C9", activebackground="#2DC3C9",command=customize)
+button.pack(side=TOP, anchor=NW, )
 
 
 # Fixing the window size and labels
 root.geometry('350x650')
 root.resizable(0,0)
-label = Tkinter.Label(root, text='00:00:00', fg='black', font='Minecraft 40 bold')
+label = Tkinter.Label(root, text='00:00:00',bg='#91B7AC', fg='black', font='Minecraft 40 bold')
 label.pack(anchor='center', pady=50)
 
 
