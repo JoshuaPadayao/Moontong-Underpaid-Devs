@@ -331,14 +331,15 @@ root = Tk()
 root.minsize(height = 50, width = 100)
 root.resizable(0,0)
 def tab1():
-    def tab2():
+	pass
+def my_tab2():
 	my_w_tab2=Toplevel(my_w)
 	my_w_tab2.geometry("200x200")
 	my_w_tab2.title("About Us")
 	my_str1=tk.StringVar()
 	label=tk.Label(my_w_tab2, textvariable=my_str1)
-	label.grid(row=2, column=2,padx=10,pady=30)
-	my_str.set("We are a group of 1st Year College students taking up the degree:\n"
+	label.grid(row=1, column=1,padx=10,pady=30)
+	my_str1.set("We are a group of 1st Year College students taking up the degree:\n"
         "Bachelor of Science in Electronics and Communications Engineering.\n"
         "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
         "We were tasked to create a Python Stopwatch with a GUI using a library of our choice." 
@@ -347,8 +348,12 @@ def tab1():
         "Anne Cornelia,\n" 
         "Rizza Claire Mollaneda,\n"
         "Sharry Celines Marcos,\n"
-        "John Nicole Losaria\n",
-        font = ('Times_New_Roman',10))
+        "John Nicole Losaria\n")
+menubar = tk.Menu(my_w)
+menu_aboutus=tk.Menu(menubar, tearoff=0)
+menubar.add_cascade(label="File", menu=menu_aboutus)
+menu_aboutus.add_command(label="About Us", command=lambda:my_tab2())
+    
        
 
 root.mainloop()
