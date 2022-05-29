@@ -64,6 +64,7 @@ from winreg import DeleteKey
 counter = 0
 running = False
 
+
 def counter_label(label):
     def count():
         if running:
@@ -149,6 +150,7 @@ def Reset(label):
 root = Tkinter.Tk()
 root.title("Moontong Stopwatch")
 root.iconbitmap('clock-icon.ico')
+root.config(bg='white')
 
 # Create a menu for changing the sound track.
 from tkinter import Menu
@@ -159,11 +161,35 @@ root.configure(menu=my_menu)
 file_menu = Menu (my_menu, tearoff=0)
 my_menu.add_cascade(label="Music", menu= file_menu)
 
+#Button for nightmode and lightmode
+button_mode=True
+
+def customize ():
+    global button_mode
+    global label
+
+    if button_mode:
+        button.config(image=noff,bg="#292929",activebackground="#292929")
+        label.config(bg='#292929', fg='white', font='Minecraft 40 bold')   
+        root.config(bg="#292929")
+        button_mode=False
+    else:
+        button.config(image=lion,bg="white",activebackground="white")
+        label.config(bg='white', fg='black', font='Minecraft 40 bold')
+        root.config(bg="white")
+        button_mode= True
+
+lion=PhotoImage(file=r'li.png')
+noff=PhotoImage(file=r'da.png')
+
+button= Button(root,image=lion,bd=0,bg="white", activebackground="white",command=customize)
+button.pack(side=TOP, anchor=NW)
+
 
 # Fixing the window size and labels
-root.geometry('700x550')
+root.geometry('350x650')
 root.resizable(0,0)
-label = Tkinter.Label(root, text='00:00:00', fg='black', font='Calibri 40 bold')
+label = Tkinter.Label(root, text='00:00:00', fg='black', font='Minecraft 40 bold')
 label.pack(anchor='center', pady=50)
 
 
