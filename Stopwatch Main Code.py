@@ -325,7 +325,7 @@ file_menu.add_command(label= "Soundtrack 4", command= soundtrack_4)
 file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 
 #About Us
-#About Us
+#Welcome!
 from tkinter import *
 root = Tk()
 root.minsize(height = 50, width = 100)
