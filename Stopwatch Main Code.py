@@ -343,7 +343,7 @@ def my_tab2():
         "Bachelor of Science in Electronics and Communications Engineering.\n"
         "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
         "We were tasked to create a Python Stopwatch with a GUI using a library of our choice." 
-	"Welcome to the Moontong-Underpaid-Devs:\n"
+	    "Welcome to the Moontong-Underpaid-Devs:\n"
         " Joshua Padayao,\n"
         "Anne Cornelia,\n" 
         "Rizza Claire Mollaneda,\n"
