@@ -327,32 +327,39 @@ file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 #About Us
 #Welcome!
 from tkinter import *
-import tkinter as tk
-my_w=tk.Tk()
-my_w.geometry("350x320")
-def my_tab1():
-	pass
-def my_tab2():
-	my_w_tab2=Toplevel(my_w)
-	my_w_tab2.geometry("200x200")
-	my_w_tab2.title("About Us")
-	my_str1=tk.StringVar()
-	label=tk.Label(my_w_tab2, textvariable=my_str1)
-	label.grid(row=1, column=1,padx=10,pady=30)
-	my_str1.set("We are a group of 1st Year College students taking up the degree:\n"
+
+
+root = Tk()
+root.minsize(height = 50, width = 50)
+root.resizable(0,0)
+def tab1():
+    def tab2():
+        label1.destroy()
+        button1.destroy()
+        label2 = Label(root, text = "We are a group of 1st Year College students taking up the degree:\n"
         "Bachelor of Science in Electronics and Communications Engineering.\n"
         "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
-        "We were tasked to create a Python Stopwatch with a GUI using a library of our choice." 
-	    "Welcome to the Moontong-Underpaid-Devs:\n"
+        "We were tasked to create a Python Stopwatch with a GUI using a library of our choice.",
+        font = ('Times_New_Roman',10))
+        label2.pack()
+        def back():
+            label2.destroy()
+            button2.destroy()
+            tab1()
+        button2 = Button(root, text = 'Back', font = ('Times_New_Roman', 10), command = back)
+        button2.pack(side = BOTTOM)
+    label1 = Label(root, text = "Welcome to the Moontong-Underpaid-Devs:\n"
         " Joshua Padayao,\n"
         "Anne Cornelia,\n" 
         "Rizza Claire Mollaneda,\n"
         "Sharry Celines Marcos,\n"
-        "John Nicole Losaria\n")
-menubar = tk.Menu(my_w)
-menu_aboutus=tk.Menu(menubar, tearoff=0, bg='blue')
-menubar.add_cascade(label="File", menu=menu_aboutus)
-menu_aboutus.add_command(label="About Us", command=lambda:my_tab2())
+        "John Nicole Losaria\n", font = ('Times_New_Roman', 10))
+    label1.pack()
+    button1 = Button(root, text = 'Next', font = ('Times_New_Roman', 10), command = tab2)
+    button1.pack(side = BOTTOM)
+button = Button(root, text = 'About Us', font = ('Times_New_Roman', 10), command = tab1)
+button.pack(side = BOTTOM)
+root.mainloop()
     
        
 
