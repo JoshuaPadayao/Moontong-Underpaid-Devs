@@ -190,13 +190,21 @@ def customize ():
         root.config(bg="#3520BC")
         button_mode=False
         lightMode.config(image=nightbg)
+        music_toggle_label.config(bg='#4D36E9',fg='white')
+        music_toggle_button.config(bg='#4D36E9')
+        action_label.config(bg='#533CFA',fg='white')
+        label2.config(bg='#3733B8')
         
     else:
         button.config(image=lion,bg="#2DC3C9",activebackground="#2DC3C9")
-        label.config(bg='#91B7AC', fg='black', font='Minecraft 40 bold')
+        label.config(bg='#91B7AC',font='Minecraft 40 bold')
         root.config(bg="#2DC3C9")
         button_mode= True
         lightMode.config(image=lightbg)
+        music_toggle_label.config(bg='#CAAF9C',fg='black')
+        music_toggle_button.config(bg='#CAAF9C')
+        action_label.config(bg='#F0A896', fg='black')
+        label2.config(bg='#5F8D8A')
 
 lion=PhotoImage(file=r'li.png')
 noff=PhotoImage(file=r'da.png')
@@ -208,7 +216,7 @@ button.pack(side=TOP, anchor=NW, )
 # Fixing the window size and labels
 root.geometry('350x650')
 root.resizable(0,0)
-label = Tkinter.Label(root, text='00:00:00',bg='#91B7AC', fg='black', font='Minecraft 40 bold')
+label = Tkinter.Label(root, text='00:00:00',bg='#91B7AC', fg='white', font='Minecraft 40 bold')
 label.pack(anchor='center', pady=50)
 
 
@@ -238,26 +246,26 @@ def off():
     stop.configure(command=Stop)
     reset.configure(command=lambda: Reset(label))
 
-music_toggle_label = Label(g,text="Music",border=0,font=('bold',11))
-music_toggle_button = Button(g,image=M_button_on,border=0,command=off)
+music_toggle_label = Label(g,text="Music",bg='#CAAF9C',border=0,font=('bold',11), fg='black')
+music_toggle_button = Button(g,image=M_button_on,border=0,command=off, bg='#CAAF9C')
 g.pack(anchor='center', pady=5)
 music_toggle_label.pack(side='left')
 music_toggle_button.pack(side='left')
 
 
 # Continuation of the labels
-action_label = Tkinter.Label(root, text='Press Start to run stopwatch.', fg='black', font='Calibri 10 italic')
+action_label = Tkinter.Label(root, text='Press Start to run stopwatch.', bg='#F0A896', fg='black', font='Calibri 12 italic')
 action_label.pack(anchor='center', pady=20)
-label2 = Tkinter.Label(root, text='Laps:', fg='navy', font='Calibri 10 bold')
+label2 = Tkinter.Label(root, text='LAPS:', bg='#5F8D8A',fg='white', font='Calibri 10 bold')
 label2.pack()
 f = Tkinter.Frame(root)
 
 # Buttons
-clear_laps = Tkinter.Button(f, text='Clear', width=6, state='disabled', command=lambda:[Clear(), clear_laps_sound()])
-lap = Tkinter.Button(f, text='Split', width=6, state='disabled', command=lambda:[Lap(), lap_sound()])
-start = Tkinter.Button(f, text='Start', width=6, command=lambda:[Start(label), start_default()])
-stop = Tkinter.Button(f, text='Stop', width=6, state='disabled', command=lambda:[Stop(), stop_sound()])
-reset = Tkinter.Button(f, text='Reset', width=6, state='disabled', command=lambda:[Reset(label), reset_sound()])
+clear_laps = Tkinter.Button(f, font='Minecraft 10 bold',text='Clear', bg='#84C355', width=6, state='disabled', command=lambda:[Clear(), clear_laps_sound()])
+lap = Tkinter.Button(f, font='Minecraft 10 bold',text='Split', bg='#CCDC4E', width=6, state='disabled', command=lambda:[Lap(), lap_sound()])
+start = Tkinter.Button(f, font='Minecraft 10 bold',text='Start', bg='#FEF5E7', width=6, command=lambda:[Start(label), start_default()])
+stop = Tkinter.Button(f, font='Minecraft 10 bold',text='Stop', bg='#F1E693', width=6, state='disabled', command=lambda:[Stop(), stop_sound()])
+reset = Tkinter.Button(f, font='Minecraft 10 bold',text='Reset', bg='#FFEB53', width=6, state='disabled', command=lambda:[Reset(label), reset_sound()])
 
 # Create a frame
 frame = Frame(root)
