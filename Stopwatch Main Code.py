@@ -335,6 +335,7 @@ def tab1():
 	my_w_tab2=Toplevel(my_w)
 	my_w_tab2.geometry("200x200")
 	my_w_tab2.title("About Us")
+	my_str1=tk.StringVar()
 	label=tk.Label(my_w_tab2, textvariable=my_str1)
 	label.grid(row=2, column=2,padx=10,pady=30)
 	my_str.set("We are a group of 1st Year College students taking up the degree:\n"
