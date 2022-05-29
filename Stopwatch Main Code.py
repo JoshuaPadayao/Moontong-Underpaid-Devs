@@ -330,6 +330,11 @@ root = Tk()
 root.minsize(height = 50, width = 900)
 root.resizable(0,0)
 def tab1():
+	pass
+menubar = tk.Menu(my_w)
+menu_aboutus=tk.Menu(menubar, tearoff=0, bg='Blue')
+menubar.addcascade(label="About Us", menu = menu_aboutus)
+menu_aboutus.add_command(label = "About Us", command = tab1())
     def tab2():
         label1.destroy()
         button1.destroy()
