@@ -1,0 +1,8 @@
+
+
+#A font called Minecraft is used for our stopwatch. https://www.dafont.com/minecraft.font
+
+
+#Packages to install
+
+pygame==2.1.2
