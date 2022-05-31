@@ -8,5 +8,5 @@ A repository for the coding exam (**ECE115.2 16JK**)
   - Includes separate buttons for: _Start, Stop, Split (Lap), and Reset_
   - Can show the 'saved laps' and clear those as well (includes a separate button) according to the user's will
   - Able to play a sound after pressing a certain button
-  - **(ONGOING)** Can change the background color or theme (namely Darkmode and Lightmode)
-  - **(ONGOING)** Has a tutorial function
+  - Can change the background color or theme (namely Darkmode and Lightmode)
+  - **(ONGOING)** Has a tutorial function linked to this repository's wiki page
