@@ -332,6 +332,8 @@ from tkinter import *
 root = Tk()
 root.minsize(height = 50, width = 50)
 root.resizable(0,0)
+root.config(bg='#2DC3C9')
+root.title('About Us')
 def tab1():
     def tab2():
         label1.destroy()
@@ -340,11 +342,12 @@ def tab1():
         "Bachelor of Science in Electronics and Communications Engineering.\n"
         "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
         "We were tasked to create a Python Stopwatch with a GUI using a library of our choice.",
-        font = ('Times_New_Roman',10))
+        bg='#2DC3C9',font = ('Times_New_Roman',10))
         label2.pack()
         def back():
             label2.destroy()
             button2.destroy()
+            button.destroy()
             tab1()
         button2 = Button(root, text = 'Back', font = ('Times_New_Roman', 10), command = back)
         button2.pack(side = BOTTOM)
@@ -353,7 +356,8 @@ def tab1():
         "Anne Cornelia,\n" 
         "Rizza Claire Mollaneda,\n"
         "Sharry Celines Marcos,\n"
-        "John Nicole Losaria\n", font = ('Times_New_Roman', 10))
+        "John Nicole Losaria\n",bg='#2DC3C9', font = ('Times_New_Roman', 10))
+    button.destroy()
     label1.pack()
     button1 = Button(root, text = 'Next', font = ('Times_New_Roman', 10), command = tab2)
     button1.pack(side = BOTTOM)
