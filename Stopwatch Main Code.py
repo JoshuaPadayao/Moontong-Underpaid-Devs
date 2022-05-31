@@ -166,14 +166,60 @@ lightMode = Label(root, image=lightbg)
 lightMode.place(x=0,y=0,relwidth=1,relheight=1)
 
 
-# Create a menu for changing the sound track.
+# Create a menu for About Us and changing the sound track.
 from tkinter import Menu
 
 my_menu= Menu(root)
 root.configure(menu=my_menu)
 
+def AboutUs_Window():
+    root = Tk()
+    root.minsize(height = 50, width = 50)
+    root.resizable(0,0)
+    root.config(bg='#2DC3C9')
+    root.title('About Us')
+    def tab1():
+        def tab2():
+            label1.destroy()
+            button1.destroy()
+            label2 = Label(root, text = "\nWe are a group of 1st Year College students taking up the degree:\n"
+            "Bachelor of Science in Electronics and Communications Engineering.\n"
+            "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
+            "We were tasked to create a Python Stopwatch with a GUI using a library of our choice.\n",
+            bg='#2DC3C9',font = ('Times_New_Roman',10))
+            label2.pack()
+            def back():
+                label2.destroy()
+                button2.destroy()
+                button.destroy()
+                tab1()
+            button2 = Button(root, text = 'Back', font = ('Times_New_Roman', 10), command = back)
+            button2.pack(side = BOTTOM)
+        label1 = Label(root, text = "\nWelcome to the Moontong-Underpaid-Devs:\n"
+            " Joshua Padayao,\n"
+            "Anne Cornelia,\n" 
+            "Rizza Claire Mollaneda,\n"
+            "Sharry Celines Marcos,\n"
+            "John Nicole Losaria\n",bg='#2DC3C9', font = ('Times_New_Roman', 10))
+        button.destroy()
+        label1.pack()
+        button1 = Button(root, text = 'Next', font = ('Times_New_Roman', 10), command = tab2)
+        button1.pack(side = BOTTOM)
+    button = Button(root, text = 'About Us', font = ('Times_New_Roman', 10), command = tab1)
+    button.pack(side = BOTTOM)
+    root.mainloop()
+
+
+
+musicicon = PhotoImage(file='note (1).png')    
+aboutus_menu = Menu (my_menu, tearoff=0)
+my_menu.add_cascade(label="About Us", menu= aboutus_menu)
+aboutus_menu.add_command(image=musicicon, command=AboutUs_Window)
+
 file_menu = Menu (my_menu, tearoff=0)
 my_menu.add_cascade(label="Music", menu= file_menu)
+
+
 
 #Button for nightmode and lightmode
 button_mode=True
@@ -210,11 +256,11 @@ lion=PhotoImage(file=r'li.png')
 noff=PhotoImage(file=r'da.png')
 
 button= Button(root,image=lion,bd=0,bg="#2DC3C9", activebackground="#2DC3C9",command=customize)
-button.pack(side=TOP, anchor=NW, )
+button.pack(side=TOP, anchor=NW, padx=2, pady=2)
 
 
 # Fixing the window size and labels
-root.geometry('350x650')
+root.geometry('354x650')
 root.resizable(0,0)
 label = Tkinter.Label(root, text='00:00:00',bg='#91B7AC', fg='white', font='Minecraft 40 bold')
 label.pack(anchor='center', pady=50)
@@ -231,6 +277,7 @@ M_button_on = PhotoImage(file='Toggle On.png')
 M_button_off = PhotoImage(file='Toggle Off.png')
 
 def on():
+    pygame.mixer.music.play()
     music_toggle_button.configure(command=off,image=M_button_on)
     clear_laps.configure(command=lambda:[Clear(), clear_laps_sound()])
     lap.configure(command=lambda:[Lap(), lap_sound()])
@@ -239,6 +286,7 @@ def on():
     reset.configure(command=lambda:[Reset(label), reset_sound()])
 
 def off():
+    pygame.mixer.music.stop()
     music_toggle_button.configure(command=on,image=M_button_off)
     clear_laps.configure(command=Clear)
     lap.configure(command=Lap)
@@ -324,47 +372,5 @@ file_menu.add_command(label= "Soundtrack 4", command= soundtrack_4)
 
 file_menu.add_command(label= "Soundtrack 5", command= soundtrack_5)
 
-#About Us
-#Welcome!
-from tkinter import *
-
-
-root = Tk()
-root.minsize(height = 50, width = 50)
-root.resizable(0,0)
-root.config(bg='#2DC3C9')
-root.title('About Us')
-def tab1():
-    def tab2():
-        label1.destroy()
-        button1.destroy()
-        label2 = Label(root, text = "We are a group of 1st Year College students taking up the degree:\n"
-        "Bachelor of Science in Electronics and Communications Engineering.\n"
-        "Objective: This repository was created for the sole purpose of completing the final project of our Object-oriented Programming course.\n" 
-        "We were tasked to create a Python Stopwatch with a GUI using a library of our choice.",
-        bg='#2DC3C9',font = ('Times_New_Roman',10))
-        label2.pack()
-        def back():
-            label2.destroy()
-            button2.destroy()
-            button.destroy()
-            tab1()
-        button2 = Button(root, text = 'Back', font = ('Times_New_Roman', 10), command = back)
-        button2.pack(side = BOTTOM)
-    label1 = Label(root, text = "Welcome to the Moontong-Underpaid-Devs:\n"
-        " Joshua Padayao,\n"
-        "Anne Cornelia,\n" 
-        "Rizza Claire Mollaneda,\n"
-        "Sharry Celines Marcos,\n"
-        "John Nicole Losaria\n",bg='#2DC3C9', font = ('Times_New_Roman', 10))
-    button.destroy()
-    label1.pack()
-    button1 = Button(root, text = 'Next', font = ('Times_New_Roman', 10), command = tab2)
-    button1.pack(side = BOTTOM)
-button = Button(root, text = 'About Us', font = ('Times_New_Roman', 10), command = tab1)
-button.pack(side = BOTTOM)
-root.mainloop()
-    
-       
 
 root.mainloop()
