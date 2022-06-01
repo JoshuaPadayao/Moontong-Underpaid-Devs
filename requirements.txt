@@ -1,8 +1,7 @@
 
 
-#A font called Minecraft is used for our stopwatch. https://www.dafont.com/minecraft.font
+#A font called Minecraft is used for our stopwatch. It can be installed through the Minecraft.ttf file from the master branch, or through this link: https://www.dafont.com/minecraft.font
 
 
 #Packages to install
-
 pygame==2.1.2
